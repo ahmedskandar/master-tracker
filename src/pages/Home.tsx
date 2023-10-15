@@ -1,3 +1,4 @@
+import Category from "../components/category/Category";
 import Todo from "../components/todo/Todo";
 import Card from "../components/ui/Card";
 import ToggleButtons from "../components/ui/ToggleButtons";
@@ -15,7 +16,8 @@ const Home = (props: Props) => {
           Track your todos efficiently
         </p>
         <ToggleButtons />
-        <Todo />
+        {/* <Todo /> */}
+        <Category />
       </Card>
     </section>
   );
