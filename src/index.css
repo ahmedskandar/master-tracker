@@ -1,10 +1,40 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
+html {
+  font-size: 62.5%;
+}
 
-
-
-
-
+.bg-card {
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 104, 139, 0.5),
+    rgba(135, 206, 235, 0.5)
+  );
+}
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .dark-gradient {
+    @apply bg-gradient-to-b from-[#0a0e14] to-[#262c35]
+  }
+  .toggle-button {
+    @apply dark-gradient w-28 py-3 hover:bg-none hover:text-black hover:bg-gray-400
+  }
+  .add-button {
+    @apply bg-gradient-to-b from-[#EED097] to-[#D9BE76] px-6 h-12 rounded-r-md
+  }
+}
+
+@layer base {
+  body {
+    @apply dark-gradient min-h-screen
+  }
+}
+
