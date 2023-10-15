@@ -35,7 +35,7 @@
     @apply dark-gradient w-28 py-3 hover:bg-none hover:text-black hover:bg-gray-400
   }
   .add-button {
-    @apply bg-gradient-to-b from-[#EED097] to-[#D9BE76] px-6 h-12 rounded-r-md hover:bg-none hover:bg-yellow-200
+    @apply bg-gradient-to-b from-[#EED097] to-[#D9BE76] px-12 h-12 rounded-r-md hover:bg-none hover:bg-yellow-200
   }
   .bg-todo-item {
     @apply bg-gradient-to-b from-[#ECDEC4] to-[#D7D3A1]
