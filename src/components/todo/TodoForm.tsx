@@ -3,10 +3,10 @@ type Props = {}
 
 const TodoForm = (props: Props) => {
   return (
-    <div className="grid grid-cols-2 gap-y-5 mb-5 md:mb-0 md:block">
+    <div className="grid grid-cols-2 gap-y-5 mb-5 md:basis-11/12 md:mb-0 md:flex">
       <input
         type="text"
-        className="pl-4 col-span-2 rounded-md h-12 w-96 md:rounded-r-none md:rounded-l-md"
+        className="pl-4 col-span-2 w-full rounded-md h-12 md:rounded-r-none md:rounded-l-md"
         placeholder="Enter a todo..."
       />
       <select className="h-12 bg-white/50 px-2 rounded-l-md md:rounded-none">

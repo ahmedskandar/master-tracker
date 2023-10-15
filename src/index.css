@@ -4,9 +4,7 @@
   box-sizing: border-box;
 }
 
-html {
-  font-size: 62.5%;
-}
+
 
 .bg-card {
   background: linear-gradient(
@@ -30,11 +28,22 @@ html {
   .add-button {
     @apply bg-gradient-to-b from-[#EED097] to-[#D9BE76] px-6 h-12 rounded-r-md
   }
+  .bg-todo-item {
+    @apply bg-gradient-to-b from-[#ECDEC4] to-[#D7D3A1]
+  }
 }
 
 @layer base {
   body {
     @apply dark-gradient min-h-screen
   }
+  html {
+    @apply text-[62.5%] md:text-[80%]
+  }
 }
 
+/* @media (max-width: 400px) {
+  html {
+    font-size: 62.5%
+  }
+} */
