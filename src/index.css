@@ -4,7 +4,16 @@
   box-sizing: border-box;
 }
 
+/* Hide scrollbar for Chrome, Safari and Opera */
+.hide-scroll::-webkit-scrollbar {
+    display: none;
+}
 
+/* Hide scrollbar for IE, Edge and Firefox */
+.hide-scroll {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
 
 .bg-card {
   background: linear-gradient(
@@ -26,7 +35,7 @@
     @apply dark-gradient w-28 py-3 hover:bg-none hover:text-black hover:bg-gray-400
   }
   .add-button {
-    @apply bg-gradient-to-b from-[#EED097] to-[#D9BE76] px-6 h-12 rounded-r-md
+    @apply bg-gradient-to-b from-[#EED097] to-[#D9BE76] px-6 h-12 rounded-r-md hover:bg-none hover:bg-yellow-200
   }
   .bg-todo-item {
     @apply bg-gradient-to-b from-[#ECDEC4] to-[#D7D3A1]
