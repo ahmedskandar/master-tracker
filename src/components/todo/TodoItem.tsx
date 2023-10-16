@@ -36,8 +36,8 @@ const TodoItem = (props: TodoItemType) => {
         <span className="font-bold">Category:</span> <span>{category}</span>
       </p>
       <ActionIcons
-        onDeleteTodo={handleDeleteTodo}
-        onCopyTodo={handleCopyTodo}
+        onDelete={handleDeleteTodo}
+        onCopy={handleCopyTodo}
         className="flex items-center gap-4 text-xl sm:gap-8"
       />
     </li>

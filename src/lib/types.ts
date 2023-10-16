@@ -59,9 +59,9 @@ export type CategoryItemType = {
 };
 
 export type ActionIconsType = {
-  className?: string;
-  onDeleteTodo?: () => void;
-  onCopyTodo?: () => void;
+  className: string;
+  onDelete?: () => void; //These must have optional symbol otherwise error, will figure out why during my free time
+  onCopy?: () => void;
 };
 
 export enum ACTION_TYPE {

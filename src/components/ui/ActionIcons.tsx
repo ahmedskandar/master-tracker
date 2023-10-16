@@ -5,21 +5,23 @@ import { ActionIconsType } from "../../lib/types";
 
 const ActionIcons = ({
   className,
-  onDeleteTodo,
-  onCopyTodo,
+  onDelete,
+  onCopy,
 }: ActionIconsType) => {
   return (
     <div className={className}>
       <FontAwesomeIcon
+        className="hover:text-gray-500"
         role="button"
-        onClick={onDeleteTodo}
+        onClick={onDelete}
         aria-label="delete button"
         icon={faTrash}
         title="Delete"
       />
       <FontAwesomeIcon
+        className="hover:text-gray-500"
         role="button"
-        onClick={onCopyTodo}
+        onClick={onCopy}
         aria-label="copy button"
         icon={faCopy}
         title="Copy"
