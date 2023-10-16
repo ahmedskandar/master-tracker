@@ -1,6 +1,4 @@
-import { faCopy } from "@fortawesome/free-regular-svg-icons";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import ActionIcons from "../ui/ActionIcons";
 
 type Props = {};
 
@@ -14,10 +12,7 @@ const TodoItem = (props: Props) => {
       <p>
         <span className="font-bold">Category:</span> Priority
       </p>
-      <div className="flex items-center gap-4 text-xl sm:gap-8">
-        <FontAwesomeIcon role="button" icon={faTrash} />
-        <FontAwesomeIcon role="button" icon={faCopy} />
-      </div>
+      <ActionIcons className="flex items-center gap-4 text-xl sm:gap-8" />
     </li>
   );
 };
