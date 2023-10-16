@@ -9,7 +9,7 @@ const TodoForm = (props: Props) => {
         className="pl-4 col-span-2 w-full rounded-md h-12 md:rounded-r-none md:rounded-l-md"
         placeholder="Enter a todo..."
       />
-      <select className="h-12 bg-white/50 px-2 rounded-l-md md:rounded-none">
+      <select className="h-12 cursor-pointer bg-white/50 px-2 rounded-l-md md:rounded-none">
         <option value="">Category</option>
         <option value="1">Option 1</option>
         <option value="2">Option 2</option>
