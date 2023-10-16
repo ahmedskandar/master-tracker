@@ -56,16 +56,17 @@ const todoCategoryReducer = (
         todo: [...state.todo, action.payload],
       };
     case "UPDATE_TODO":
-      // Implement your logic to update a todo item here
       return state;
     case ACTION_TYPE.DELETE_TODO:
-      // Logic to delete a todo
       return {
         ...state,
         todo: state.todo.filter((todo) => todo.id !== action.payload),
       };
     case ACTION_TYPE.ADD_CATEGORY:
-      return state.category.concat(action.payload);
+      return {
+        ...state,
+        category: [...state.category, action.payload]
+      };
     default:
       return state;
   }
