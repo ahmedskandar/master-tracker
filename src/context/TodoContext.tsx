@@ -1,21 +1,48 @@
 import React, { createContext, useContext, useReducer } from "react";
-import { ACTION_TYPE, ChildrenProps, TodoActionType, TodoStateType } from "../lib/types";
+import {
+  ACTION_TYPE,
+  ChildrenProps,
+  TodoActionType,
+  TodoStateType,
+} from "../lib/types";
 
 //Initial State of the todo reducer
-const initialState: TodoStateType = [
-  {
-    id: 1,
-    value: "Buy vinegar at the shop",
-    categoryId: 1,
-    isChecked: false,
-  },
-  {
-    id: 2,
-    value: "Take my dog for a walk",
-    categoryId: 2,
-    isChecked: false,
-  },
-];
+const initialState: TodoStateType = {
+  todo: [
+    {
+      id: 1,
+      value: "Buy vinegar at the shop",
+      categoryId: 1,
+      isChecked: false,
+    },
+    {
+      id: 2,
+      value: "Take my dog for a walk",
+      categoryId: 1,
+      isChecked: false,
+    },
+    {
+      id: 3,
+      value: "Take coffee from office",
+      categoryId: 2,
+      isChecked: false,
+    },
+  ],
+  category: [
+    {
+      id: 1,
+      value: "Groceries",
+    },
+    {
+      id: 2,
+      value: "Work",
+    },
+    {
+      id: 3,
+      value: "Priority",
+    },
+  ],
+};
 
 //Todo reducer function
 const todoReducer = (state: TodoStateType, action: TodoActionType): any => {
@@ -28,7 +55,9 @@ const todoReducer = (state: TodoStateType, action: TodoActionType): any => {
       return state;
     case ACTION_TYPE.DELETE_TODO:
       // Logic to delete a todo
-      return state.filter((todo) => todo.id !== action.payload);
+      return {...state, todo: state.todo.filter((todo) => todo.id !== action.payload)}
+    case ACTION_TYPE.ADD_CATEGORY:
+      return state.category.concat(action.payload)
     default:
       return state;
   }

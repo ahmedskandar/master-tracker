@@ -4,15 +4,12 @@ import { toast } from "react-toastify";
 
 // A functional component for rendering a single todo item
 const TodoItem = (props: TodoItemType) => {
-  // Destructure props to access relevant data
   const { value, categoryId, id, isChecked, dispatch } = props;
 
-  // Event handler to delete the todo item
   const handleDeleteTodo = () => {
     dispatch({ type: ACTION_TYPE.DELETE_TODO, payload: id });
   };
 
-  // Event handler to copy the todo item's value to the clipboard
   const handleCopyTodo = async () => {
     try {
       // Using navigator.clipboard to copy the todo item text
