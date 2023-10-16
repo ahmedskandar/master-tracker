@@ -27,18 +27,18 @@ const TodoItem = (props: TodoItemType) => {
 
   const category = getCategoryName(categoryId);
   return (
-    <li className="bg-todo-item rounded-lg py-4 px-8 flex gap-4 justify-between">
-      <div className="flex gap-5">
-        <input type="checkbox" />
+    <li className="bg-todo-item rounded-lg py-4 px-8 grid grid-cols-3 gap-4 justify-between">
+      <div className="flex col-span-3 gap-5 md:col-span-1">
+        <input type="checkbox"/>
         <p>{value}</p>
       </div>
-      <p>
+      <p className="text-right">
         <span className="font-bold">Category:</span> <span>{category}</span>
       </p>
       <ActionIcons
         onDelete={handleDeleteTodo}
         onCopy={handleCopyTodo}
-        className="flex items-center gap-4 text-xl sm:gap-8"
+        className="flex items-center justify-end gap-4 text-xl sm:gap-8"
       />
     </li>
   );
