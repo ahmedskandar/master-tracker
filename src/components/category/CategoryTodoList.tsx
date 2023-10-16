@@ -1,15 +1,17 @@
-import CategoryTodoItem from './CategoryTodoItem';
+import { useTodoCategory } from "../../context/TodoCategoryContext";
+import CategoryTodoItem from "./CategoryTodoItem";
 
-type Props = {}
+const CategoryTodoList = ({id}: { id: number }) => {
+    const { getCategoryTodoItems } = useTodoCategory();
 
-const CategoryTodoList = (props: Props) => {
+  const todoItems = getCategoryTodoItems(id)
   return (
     <ul className="py-2 px-8 bg-white flex flex-col gap-3">
-      <CategoryTodoItem />
-      <CategoryTodoItem />
-      <CategoryTodoItem />
+      {todoItems.map((todo: any, index: number) => (
+        <CategoryTodoItem key={index} {...todo} />
+      ))}
     </ul>
   );
-}
+};
 
-export default CategoryTodoList
+export default CategoryTodoList;

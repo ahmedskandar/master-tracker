@@ -1,3 +1,4 @@
+import { useTodoCategory } from "../../context/TodoCategoryContext";
 import { ACTION_TYPE, TodoItemType } from "../../lib/types";
 import ActionIcons from "../ui/ActionIcons";
 import { toast } from "react-toastify";
@@ -21,6 +22,10 @@ const TodoItem = (props: TodoItemType) => {
       alert("Failed to copy text: " + err);
     }
   };
+
+      const { getCategoryName } = useTodoCategory();
+
+  const category = getCategoryName(categoryId);
   return (
     <li className="bg-todo-item rounded-lg py-4 px-8 flex gap-4 justify-between">
       <div className="flex gap-5">
@@ -28,7 +33,7 @@ const TodoItem = (props: TodoItemType) => {
         <p>{value}</p>
       </div>
       <p>
-        <span className="font-bold">Category:</span> Priority
+        <span className="font-bold">Category:</span> <span>{category}</span>
       </p>
       <ActionIcons
         onDeleteTodo={handleDeleteTodo}

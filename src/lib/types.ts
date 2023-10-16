@@ -13,18 +13,17 @@ export type ToggleButtonsType = {
   onChangeActiveView: (view: VIEW) => void;
 };
 
-
-export type TodoStateType = {
+export type TodoCategoryStateType = {
   todo: {
-    id: number,
-    value: string,
-    categoryId: number,
-    isChecked: boolean
-  }[],
+    id: number;
+    value: string;
+    categoryId: number;
+    isChecked: boolean;
+  }[];
   category: {
-    id: number,
-    value: string
-  }[]
+    id: number;
+    value: string;
+  }[];
 };
 
 export type TodoItemType = {
@@ -40,17 +39,25 @@ export type TodoActionType = {
   payload?: any;
 };
 
+// export type CategoryItemType = {
+//   id: number;
+//   value: string;
+//   dispatch: React.Dispatch<TodoActionType>;
+//   todoState: {
+//     id: number;
+//     value: string;
+//     categoryId: number;
+//     isChecked: boolean;
+//   }[];
+// };
+
 export type CategoryItemType = {
   id: number;
   value: string;
   dispatch: React.Dispatch<TodoActionType>;
-  todoState: {
-    id: number;
-    value: string;
-    categoryId: number;
-    isChecked: boolean;
-  }[];
+  
 };
+
 export type ActionIconsType = {
   className?: string;
   onDeleteTodo?: () => void;
@@ -61,10 +68,26 @@ export enum ACTION_TYPE {
   ADD_TODO = "ADD_TODO",
   DELETE_TODO = "DELETE_TODO",
   ADD_CATEGORY = "ADD_CATEGORY",
-  DELETE_CATEGORY = "DELETE_CATEGORY"
+  DELETE_CATEGORY = "DELETE_CATEGORY",
 }
 
 export type ToasterType = {
-  message: string,
-  onClose: () => void
-}
+  message: string;
+  onClose: () => void;
+};
+
+export type CategoryTodoListType = {
+  todoState: {
+    id: number;
+    value: string;
+    categoryId: number;
+    isChecked: boolean;
+  }[];
+};
+
+export type CategoryTodoItemType = {
+  id: number;
+  value: string;
+  categoryId: number;
+  isChecked: boolean;
+};

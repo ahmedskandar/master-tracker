@@ -1,10 +1,10 @@
+import { CategoryTodoItemType } from "../../lib/types";
 import ActionIcons from "../ui/ActionIcons";
-type Props = {};
 
-const CategoryTodoItem = (props: Props) => {
+const CategoryTodoItem = ({value}: CategoryTodoItemType) => {
   return (
     <li className="flex justify-between">
-      <p>Todo n</p>
+      <p>{value}</p>
       <ActionIcons  className="space-x-5"/>
     </li>
   );
