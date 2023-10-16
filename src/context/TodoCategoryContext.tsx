@@ -51,8 +51,10 @@ const todoCategoryReducer = (
 ): any => {
   switch (action.type) {
     case ACTION_TYPE.ADD_TODO:
-      return console.log("Added todo");
-    //   return [...state, action.payload];
+      return {
+        ...state,
+        todo: [...state.todo, action.payload],
+      };
     case "UPDATE_TODO":
       // Implement your logic to update a todo item here
       return state;

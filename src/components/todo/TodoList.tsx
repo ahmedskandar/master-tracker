@@ -1,9 +1,7 @@
 import TodoItem from "./TodoItem";
 import { useTodoCategory } from "../../context/TodoCategoryContext";
 
-type Props = {};
-
-const TodoList = (props: Props) => {
+const TodoList = () => {
   // Access state and dispatch function from the TodoContext
   const { state, dispatch } = useTodoCategory();
   return (
