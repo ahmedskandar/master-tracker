@@ -45,7 +45,7 @@ const initialState: TodoStateType = {
 };
 
 //Todo reducer function
-const todoReducer = (state: TodoStateType, action: TodoActionType): any => {
+const todoCategoryReducer = (state: TodoStateType, action: TodoActionType): any => {
   switch (action.type) {
     case ACTION_TYPE.ADD_TODO:
       return console.log("Added todo");
@@ -64,24 +64,24 @@ const todoReducer = (state: TodoStateType, action: TodoActionType): any => {
 };
 
 //Todo context
-const TodoContext = createContext<
+const TodoCategoryContext = createContext<
   { state: TodoStateType; dispatch: React.Dispatch<TodoActionType> } | undefined
 >(undefined);
 
 //Todo provider
 export const TodoProvider = ({ children }: ChildrenProps) => {
-  const [state, dispatch] = useReducer(todoReducer, initialState);
+  const [state, dispatch] = useReducer(todoCategoryReducer, initialState);
 
   return (
-    <TodoContext.Provider value={{ state, dispatch }}>
+    <TodoCategoryContext.Provider value={{ state, dispatch }}>
       {children}
-    </TodoContext.Provider>
+    </TodoCategoryContext.Provider>
   );
 };
 
 //Reusable function to get the value of todo context
-export const useTodo = () => {
-  const context = useContext(TodoContext);
+export const useTodoCategory = () => {
+  const context = useContext(TodoCategoryContext);
   if (context === undefined) {
     throw new Error("useTodo must be used within a TodoProvider");
   }
