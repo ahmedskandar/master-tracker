@@ -3,15 +3,15 @@ import Category from "../components/category/Category";
 import Todo from "../components/todo/Todo";
 import Card from "../components/ui/Card";
 import ToggleButtons from "../components/ui/ToggleButtons";
-import { View } from "../lib/types";
+import { VIEW } from "../lib/types";
 
 type Props = {};
 
 const Home = (props: Props) => {
 
-const [activeView, setActiveView] = useState(View.TODO);
+const [activeView, setActiveView] = useState(VIEW.TODO);
 
-const handleChangeActiveView = (view: View) => {
+const handleChangeActiveView = (view: VIEW) => {
   setActiveView(view)
 }
 
@@ -29,7 +29,7 @@ const handleChangeActiveView = (view: View) => {
           activeView={activeView}
           onChangeActiveView={handleChangeActiveView}
         />
-        {activeView === View.TODO ? <Todo /> : <Category />}
+        {activeView === VIEW.TODO ? <Todo /> : <Category />}
       </Card>
     </section>
   );
