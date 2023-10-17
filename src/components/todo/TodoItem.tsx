@@ -5,10 +5,13 @@ import { toast } from "react-toastify";
 
 // A functional component for rendering a single todo item
 const TodoItem = (props: TodoItemType) => {
-  const { value, categoryId, id, isChecked, dispatch } = props;
+  const { value, categoryId, id, isChecked, dispatch, index } = props;
+
+  const { getCategoryName } = useTodoCategory();
 
   const handleDeleteTodo = () => {
     dispatch({ type: ACTION_TYPE.DELETE_TODO, payload: id });
+    toast("Todo deleted!");
   };
 
   const handleCopyTodo = async () => {
@@ -23,14 +26,22 @@ const TodoItem = (props: TodoItemType) => {
     }
   };
 
-      const { getCategoryName } = useTodoCategory();
+  const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    dispatch({ type: ACTION_TYPE.TOGGLE_CHECK, payload: id });
+  };
 
   const category = getCategoryName(categoryId);
   return (
-    <li className="bg-todo-item rounded-lg py-4 px-8 grid grid-cols-3 gap-4 justify-between">
+    <li
+      className={`bg-todo-item ${
+        isChecked && "line-through bg-none border"
+      } rounded-lg py-4 px-8 grid grid-cols-3 gap-4 justify-between`}
+    >
       <div className="flex col-span-3 gap-5 md:col-span-1">
-        <input type="checkbox"/>
-        <p>{value}</p>
+        <input type="checkbox" checked={isChecked} onChange={handleCheckboxChange} />
+        <p>
+          {index + 1}. {value}
+        </p>
       </div>
       <p className="text-right">
         <span className="font-bold">Category:</span> <span>{category}</span>

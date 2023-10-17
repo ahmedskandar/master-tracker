@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useEffect, useReducer } from "react";
 import {
   ACTION_TYPE,
+  CategoryTodoItemType,
   ChildrenProps,
   TodoActionType,
   TodoCategoryStateType,
@@ -43,6 +44,11 @@ const todoCategoryReducer = (
         ...state,
         category: [...state.category, action.payload],
       };
+      case ACTION_TYPE.TOGGLE_CHECK:
+        return {
+          ...state,
+          todo: state.todo.map(todo => todo.id === action.payload ? {...todo, isChecked: !todo.isChecked} : todo)
+        }
     default:
       return state;
   }
@@ -54,11 +60,12 @@ const TodoCategoryContext = createContext<
       state: TodoCategoryStateType;
       dispatch: React.Dispatch<TodoActionType>;
       getCategoryName: (id: number) => string;
-      getCategoryTodoNumber: (id: number) => any;
-      getCategoryTodoItems: (id: number) => any;
+      getCategoryTodoNumber: (id: number) => number;
+      getCategoryTodoItems: (id: number) => CategoryTodoItemType[];
     }
   | undefined
 >(undefined);
+
 
 //Todo provider
 export const TodoProvider = ({ children }: ChildrenProps) => {
@@ -82,9 +89,10 @@ useEffect(() => {
 
   //Returns category name based on ID, since ID is used to uniquely reference each category
   const getCategoryName = (id: number) => {
-    const category = state?.category?.find((category: any) => category.id === id);
+    const category = state.category?.find((category: any) => category.id === id);
     return category?.value; // Change "Default Value" to whatever default you want
   };
+  
 
   return (
     <TodoCategoryContext.Provider

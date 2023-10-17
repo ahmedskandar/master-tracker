@@ -1,11 +1,15 @@
 import { CategoryTodoItemType } from "../../lib/types";
-import ActionIcons from "../ui/ActionIcons";
 
-const CategoryTodoItem = ({value}: CategoryTodoItemType) => {
+const CategoryTodoItem = ({
+  value,
+  index,
+  isChecked,
+}: CategoryTodoItemType) => {
   return (
-    <li className="flex justify-between">
-      <p>{value}</p>
-      <ActionIcons  className="space-x-5"/>
+    <li>
+      <p className={`${isChecked && "line-through"}`}>
+        {index !== undefined && index + 1}. {value}
+      </p>
     </li>
   );
 };

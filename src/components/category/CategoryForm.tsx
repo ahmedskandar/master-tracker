@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useTodoCategory } from "../../context/TodoCategoryContext";
 import { ACTION_TYPE } from "../../lib/types";
+import { toast } from "react-toastify";
 
 const CategoryForm = () => {
   const { dispatch } = useTodoCategory();
@@ -14,13 +15,16 @@ const CategoryForm = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+     if (!input)
+       return toast("Please fill in the input field", { theme: "light" });
+
     const inputData = {
       id: Math.random(),
       value: input,
     };
 
     dispatch({type: ACTION_TYPE.ADD_CATEGORY, payload: inputData})
-
+    toast("Successfully added a category");
     setInput("");
   };
 
@@ -31,6 +35,7 @@ const CategoryForm = () => {
     >
       <input
         value={input}
+        maxLength={10}
         onChange={handleInputChange}
         type="text"
         className="pl-4 col-span-2 w-full rounded-md h-12 md:rounded-r-none md:rounded-l-md"

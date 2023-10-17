@@ -5,15 +5,29 @@ import { useState } from "react";
 import { useTodoCategory } from "../../context/TodoCategoryContext";
 import { toast } from "react-toastify";
 
-const CategoryItem = ({ dispatch, id, value }: CategoryItemType) => {
+const CategoryItem = ({ dispatch, id, value, index }: CategoryItemType) => {
   const [isOpen, setIsOpen] = useState(false);
-  const handleOpenAccordion = () => {
-    setIsOpen((prevIsOpen) => !prevIsOpen);
-  };
   const { getCategoryTodoNumber } = useTodoCategory();
 
+  const handleOpenAccordion = () => {
+    if (todoNumber < 1) return 
+    setIsOpen((prevIsOpen) => !prevIsOpen);
+  };
+
   const handleDeleteCategory = () => {
-    dispatch({ type: ACTION_TYPE.DELETE_CATEGORY, payload: id });
+    // Display a confirmation dialog
+    const userConfirmed = window.confirm(
+      "Deleting a category deletes all the todos associated with it. Do you really wish to proceed?"
+    );
+
+    // Check if the user clicked "Yes"
+    if (userConfirmed) {
+      // Do something when "Yes" is clicked
+      dispatch({ type: ACTION_TYPE.DELETE_CATEGORY, payload: id });
+      toast("Category deleted");
+    } else {
+      return;
+    }
   };
 
   const handleCopyCategory = async () => {
@@ -27,7 +41,7 @@ const CategoryItem = ({ dispatch, id, value }: CategoryItemType) => {
       alert("Failed to copy text: " + err);
     }
   };
-
+  const todoNumber = getCategoryTodoNumber(id);
   return (
     <li>
       <div
@@ -36,8 +50,10 @@ const CategoryItem = ({ dispatch, id, value }: CategoryItemType) => {
           isOpen ? "rounded-t-lg" : "rounded-lg"
         } py-4 px-8 flex gap-4 justify-between hover:bg-none hover:bg-yellow-200`}
       >
-        <p>{value}</p>
-        <span>{getCategoryTodoNumber(id)}</span>
+        <p>{index+1}. {value}</p>
+        <span>
+          <b>{todoNumber}</b> {todoNumber > 1 ? "todos" : "todo"}
+        </span>
         <ActionIcons
           onDelete={handleDeleteCategory}
           onCopy={handleCopyCategory}

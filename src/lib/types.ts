@@ -13,6 +13,18 @@ export type ToggleButtonsType = {
   onChangeActiveView: (view: VIEW) => void;
 };
 
+export type TodoType = {
+  id: number;
+  value: string;
+  categoryId: number;
+  isChecked: boolean;
+}[];
+
+export type CategoryType = {
+  id: number;
+  value: string;
+}[];
+
 export type TodoCategoryStateType = {
   todo: {
     id: number;
@@ -32,6 +44,7 @@ export type TodoItemType = {
   categoryId: number;
   isChecked: boolean;
   dispatch: React.Dispatch<TodoActionType>;
+  index: number
 };
 
 export type TodoActionType = {
@@ -55,7 +68,7 @@ export type CategoryItemType = {
   id: number;
   value: string;
   dispatch: React.Dispatch<TodoActionType>;
-  
+  index: number
 };
 
 export type ActionIconsType = {
@@ -69,6 +82,7 @@ export enum ACTION_TYPE {
   DELETE_TODO = "DELETE_TODO",
   ADD_CATEGORY = "ADD_CATEGORY",
   DELETE_CATEGORY = "DELETE_CATEGORY",
+  TOGGLE_CHECK = "TOGGLE_CHECK",
 }
 
 export type ToasterType = {
@@ -90,4 +104,13 @@ export type CategoryTodoItemType = {
   value: string;
   categoryId: number;
   isChecked: boolean;
+  index?: number
 };
+
+export type SearchType = {
+  onSearchInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+};
+
+export type ListType = {
+  searchInput: string
+}

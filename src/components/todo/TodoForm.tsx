@@ -39,6 +39,7 @@ const TodoForm = (props: Props) => {
 
     dispatch({ type: ACTION_TYPE.ADD_TODO, payload: inputData });
 
+    toast("Successfully added a todo")
     setInput("");
     setCategorySelect("");
   };
