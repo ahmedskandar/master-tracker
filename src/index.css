@@ -44,7 +44,7 @@
 
 @layer base {
   body {
-    @apply dark-gradient min-h-screen
+    @apply dark-gradient 
   }
   html {
     @apply text-[62.5%] md:text-[80%]
