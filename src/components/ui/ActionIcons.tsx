@@ -3,11 +3,7 @@ import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ActionIconsType } from "../../lib/types";
 
-const ActionIcons = ({
-  className,
-  onDelete,
-  onCopy,
-}: ActionIconsType) => {
+const ActionIcons = ({ className, onDelete, onCopy }: ActionIconsType) => {
   return (
     <div className={className}>
       <FontAwesomeIcon

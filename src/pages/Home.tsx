@@ -5,17 +5,12 @@ import Card from "../components/ui/Card";
 import ToggleButtons from "../components/ui/ToggleButtons";
 import { VIEW } from "../lib/types";
 
-type Props = {};
+const Home = () => {
+  const [activeView, setActiveView] = useState(VIEW.TODO);
 
-const Home = (props: Props) => {
-
-const [activeView, setActiveView] = useState(VIEW.TODO);
-
-const handleChangeActiveView = (view: VIEW) => {
-  setActiveView(view)
-}
-
-
+  const handleChangeActiveView = (view: VIEW) => {
+    setActiveView(view);
+  };
   return (
     <section className="flex justify-center h-[100svh] items-center">
       <Card>

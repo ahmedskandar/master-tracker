@@ -25,10 +25,9 @@ const TodoForm = (props: Props) => {
     if (!input)
       return toast("Please fill in the input field", { theme: "light" });
     if (!categorySelect)
-      return toast(
-        "Please select a category, if you have none create one",
-        { theme: "light" }
-      );
+      return toast("Please select a category, if you have none create one", {
+        theme: "light",
+      });
 
     const inputData = {
       id: Math.random(),
@@ -39,7 +38,7 @@ const TodoForm = (props: Props) => {
 
     dispatch({ type: ACTION_TYPE.ADD_TODO, payload: inputData });
 
-    toast("Successfully added a todo")
+    toast("Successfully added a todo");
     setInput("");
     setCategorySelect("");
   };
@@ -50,15 +49,19 @@ const TodoForm = (props: Props) => {
       className="grid grid-cols-2 gap-y-5 mb-5 md:basis-11/12 md:mb-0 md:flex"
     >
       <input
-      maxLength={25}
+        maxLength={25}
         value={input}
         type="text"
         className="pl-4 col-span-2 w-full rounded-md h-12 md:rounded-r-none md:rounded-l-md"
         placeholder="Enter a todo..."
         onChange={handleInputChange}
       />
+      <label htmlFor="select" className="visually-hidden">
+        Select a category
+      </label>
       <select
         onChange={handleCategoryChange}
+        id="select"
         value={categorySelect}
         className="h-12 cursor-pointer bg-white/50 px-2 rounded-l-md md:rounded-none"
       >
@@ -71,7 +74,7 @@ const TodoForm = (props: Props) => {
           </option>
         ))}
       </select>
-      <button type="submit" className="add-button">
+      <button aria-label="Add todo" type="submit" className="add-button">
         ADD
       </button>
     </form>

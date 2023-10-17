@@ -6,13 +6,13 @@
 
 /* Hide scrollbar for Chrome, Safari and Opera */
 .hide-scroll::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 
 /* Hide scrollbar for IE, Edge and Firefox */
 .hide-scroll {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 .bg-card {
@@ -23,36 +23,42 @@
   );
 }
 
+/*Hides elements from the screen but still accessible to screen reader*/
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer components {
   .dark-gradient {
-    @apply bg-gradient-to-b from-[#0a0e14] to-[#262c35]
+    @apply bg-gradient-to-b from-[#0a0e14] to-[#262c35];
   }
   .toggle-button {
-    @apply dark-gradient w-28 py-3 hover:bg-none hover:text-black hover:bg-gray-400
+    @apply dark-gradient w-28 py-3 hover:bg-none hover:text-black hover:bg-gray-400;
   }
   .add-button {
-    @apply bg-gradient-to-b from-[#EED097] to-[#D9BE76] px-12 h-12 rounded-r-md hover:bg-none hover:bg-yellow-200
+    @apply bg-gradient-to-b from-[#EED097] to-[#D9BE76] px-12 h-12 rounded-r-md hover:bg-none hover:bg-yellow-200;
   }
   .bg-todo-item {
-    @apply bg-gradient-to-b from-[#ECDEC4] to-[#D7D3A1]
+    @apply bg-gradient-to-b from-[#ECDEC4] to-[#D7D3A1];
   }
 }
 
 @layer base {
   body {
-    @apply dark-gradient 
+    @apply dark-gradient;
   }
   html {
-    @apply text-[62.5%] md:text-[80%]
+    @apply text-[62.5%] md:text-[80%];
   }
 }
-
-/* @media (max-width: 400px) {
-  html {
-    font-size: 62.5%
-  }
-} */

@@ -15,15 +15,15 @@ const CategoryForm = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-     if (!input)
-       return toast("Please fill in the input field", { theme: "light" });
+    if (!input)
+      return toast("Please fill in the input field", { theme: "light" });
 
     const inputData = {
       id: Math.random(),
       value: input,
     };
 
-    dispatch({type: ACTION_TYPE.ADD_CATEGORY, payload: inputData})
+    dispatch({ type: ACTION_TYPE.ADD_CATEGORY, payload: inputData });
     toast("Successfully added a category");
     setInput("");
   };
@@ -44,6 +44,7 @@ const CategoryForm = () => {
       <div className="flex justify-center col-span-2">
         <button
           type="submit"
+          aria-label="Add category"
           className="add-button rounded-md md:rounded-l-none"
         >
           ADD

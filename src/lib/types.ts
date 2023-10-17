@@ -1,4 +1,3 @@
-//Sets the children prop type
 export type ChildrenProps = {
   children: React.ReactNode;
 };
@@ -44,7 +43,7 @@ export type TodoItemType = {
   categoryId: number;
   isChecked: boolean;
   dispatch: React.Dispatch<TodoActionType>;
-  index: number
+  index: number;
 };
 
 export type TodoActionType = {
@@ -52,29 +51,17 @@ export type TodoActionType = {
   payload?: any;
 };
 
-// export type CategoryItemType = {
-//   id: number;
-//   value: string;
-//   dispatch: React.Dispatch<TodoActionType>;
-//   todoState: {
-//     id: number;
-//     value: string;
-//     categoryId: number;
-//     isChecked: boolean;
-//   }[];
-// };
-
 export type CategoryItemType = {
   id: number;
   value: string;
   dispatch: React.Dispatch<TodoActionType>;
-  index: number
+  index: number;
 };
 
 export type ActionIconsType = {
   className: string;
-  onDelete?: () => void; //These must have optional symbol otherwise error, will figure out why during my free time
-  onCopy?: () => void;
+  onDelete: () => void;
+  onCopy: () => void;
 };
 
 export enum ACTION_TYPE {
@@ -104,7 +91,7 @@ export type CategoryTodoItemType = {
   value: string;
   categoryId: number;
   isChecked: boolean;
-  index?: number
+  index?: number;
 };
 
 export type SearchType = {
@@ -112,5 +99,5 @@ export type SearchType = {
 };
 
 export type ListType = {
-  searchInput: string
-}
+  searchInput: string;
+};

@@ -3,7 +3,6 @@ import { ACTION_TYPE, TodoItemType } from "../../lib/types";
 import ActionIcons from "../ui/ActionIcons";
 import { toast } from "react-toastify";
 
-// A functional component for rendering a single todo item
 const TodoItem = (props: TodoItemType) => {
   const { value, categoryId, id, isChecked, dispatch, index } = props;
 
@@ -22,7 +21,7 @@ const TodoItem = (props: TodoItemType) => {
       toast("Todo copied!");
     } catch (err) {
       // Display an error alert if copying fails
-      alert("Failed to copy text: " + err);
+      toast("Failed to copy text: " + err);
     }
   };
 

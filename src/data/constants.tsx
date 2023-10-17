@@ -8,9 +8,11 @@ export const getFilteredTodo = (searchInput: string, state: TodoType) =>
       )
     : state;
 
-    export const getFilteredCategory = (searchInput: string, state: CategoryType) =>
+export const getFilteredCategory = (searchInput: string, state: CategoryType) =>
   searchInput
     ? state.filter((item) =>
         item.value.toLowerCase().includes(searchInput.toLowerCase())
       )
     : state;
+
+export const LOCAL_STORAGE_KEY = "TODO_CATEGORY";

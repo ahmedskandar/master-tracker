@@ -12,16 +12,24 @@ const TodoList = ({ searchInput }: ListType) => {
   );
 
   return (
-    <ul className="mt-14 hide-scroll flex flex-col gap-5 max-h-48 overflow-y-scroll border-r pr-2">
-      {filteredTodo.map((todoItem, index) => (
-        <TodoItem
-          key={todoItem.id}
-          index={index}
-          dispatch={dispatch}
-          {...todoItem}
-        />
-      ))}
-    </ul>
+    <>
+      {Object.keys(filteredTodo).length === 0 && (
+        <p className="text-center mt-14 text-white">No todo found</p>
+      )}
+
+      {Object.keys(filteredTodo).length !== 0 && (
+        <ul className="mt-14 hide-scroll flex flex-col gap-5 max-h-48 overflow-y-scroll border-r pr-2">
+          {filteredTodo.map((todoItem, index) => (
+            <TodoItem
+              key={todoItem.id}
+              index={index}
+              dispatch={dispatch}
+              {...todoItem}
+            />
+          ))}
+        </ul>
+      )}
+    </>
   );
 };
 

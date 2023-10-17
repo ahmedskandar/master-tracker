@@ -6,18 +6,14 @@ import {
   TodoActionType,
   TodoCategoryStateType,
 } from "../lib/types";
+import { LOCAL_STORAGE_KEY } from "../data/constants";
 
 //Initial State of the todo reducer
 const initialState = {
-  todo: [
-   
-  ],
-  category: [
-    
-  ],
+  todo: [],
+  category: [],
 };
 
-// state.todo.filter((todo) => todo.categoryId === action.payload);
 //Todo reducer function (only functions that modify state, pure reusable functions below)
 const todoCategoryReducer = (
   state: TodoCategoryStateType,
@@ -31,8 +27,10 @@ const todoCategoryReducer = (
       };
     case ACTION_TYPE.DELETE_CATEGORY:
       return {
-        todo: state.todo.filter(todo => todo.categoryId !== action.payload),
-        category: state.category.filter((category) => category.id !== action.payload),
+        todo: state.todo.filter((todo) => todo.categoryId !== action.payload),
+        category: state.category.filter(
+          (category) => category.id !== action.payload
+        ),
       };
     case ACTION_TYPE.DELETE_TODO:
       return {
@@ -44,11 +42,15 @@ const todoCategoryReducer = (
         ...state,
         category: [...state.category, action.payload],
       };
-      case ACTION_TYPE.TOGGLE_CHECK:
-        return {
-          ...state,
-          todo: state.todo.map(todo => todo.id === action.payload ? {...todo, isChecked: !todo.isChecked} : todo)
-        }
+    case ACTION_TYPE.TOGGLE_CHECK:
+      return {
+        ...state,
+        todo: state.todo.map((todo) =>
+          todo.id === action.payload
+            ? { ...todo, isChecked: !todo.isChecked }
+            : todo
+        ),
+      };
     default:
       return state;
   }
@@ -66,19 +68,16 @@ const TodoCategoryContext = createContext<
   | undefined
 >(undefined);
 
-
 //Todo provider
 export const TodoProvider = ({ children }: ChildrenProps) => {
-  // const initialValues = localStorage.getItem("TODO_CATEGORY") !== undefined ? localStorage.getItem("TODO_CATEGORY") : initialState;
-  // const [state, dispatch] = useReducer(todoCategoryReducer, initialValues);
-const storedState = localStorage.getItem("TODO_CATEGORY");
-const initialData = storedState ? JSON.parse(storedState) : initialState;
+  const storedState = localStorage.getItem(LOCAL_STORAGE_KEY);
+  const initialData = storedState ? JSON.parse(storedState) : initialState;
   const [state, dispatch] = useReducer(todoCategoryReducer, initialData);
 
-useEffect(() => {
-  // Store the state in localStorage whenever it changes to persist in browser refresh
-  localStorage.setItem("TODO_CATEGORY", JSON.stringify(state));
-}, [state]);
+  useEffect(() => {
+    // Store the state in localStorage whenever it changes to persist in browser refresh
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(state));
+  }, [state]);
 
   //Returns the todo items' properties
   const getCategoryTodoItems = (id: number) =>
@@ -89,10 +88,11 @@ useEffect(() => {
 
   //Returns category name based on ID, since ID is used to uniquely reference each category
   const getCategoryName = (id: number) => {
-    const category = state.category?.find((category: any) => category.id === id);
+    const category = state.category?.find(
+      (category: any) => category.id === id
+    );
     return category?.value; // Change "Default Value" to whatever default you want
   };
-  
 
   return (
     <TodoCategoryContext.Provider
