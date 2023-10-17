@@ -17,7 +17,7 @@ const handleChangeActiveView = (view: VIEW) => {
 
 
   return (
-    <section className="flex justify-center h-screen items-center">
+    <section className="flex justify-center h-[100svh] items-center">
       <Card>
         <h1 className="font-serif text-white text-4xl text-center md:text-5xl">
           MASTER TRACKER
