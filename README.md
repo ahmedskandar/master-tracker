@@ -19,6 +19,8 @@ Welcome to your solution for efficient task management. This repository contains
 
 8. **Category Feature**: A feature that allows you to categorize your Todo list items, helping you further organize and prioritize your tasks. Each todo can be viewed in their respective category and the categories can be added as well as  deleted.
 
+9. **Form validation and error handling**: Precise form validation and error management has been implemented for data accuracy and a user-friendly experience.
+
 ## Getting Started
 
 ### Prerequisites
