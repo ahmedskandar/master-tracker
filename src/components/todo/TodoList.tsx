@@ -18,7 +18,7 @@ const TodoList = ({ searchInput }: ListType) => {
       )}
 
       {Object.keys(filteredTodo).length !== 0 && (
-        <ul className="mt-14 hide-scroll flex flex-col gap-5 max-h-48 overflow-y-scroll border-r pr-2">
+        <ul className="mt-14 hide-scroll flex flex-col gap-5 max-h-60 overflow-y-scroll border-r pr-2">
           {filteredTodo.map((todoItem, index) => (
             <TodoItem
               key={todoItem.id}

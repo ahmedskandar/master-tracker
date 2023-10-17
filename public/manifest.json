@@ -1,14 +1,16 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Master Tracker",
+  "name": "Master Tracker | Manage todos efficiently",
   "icons": [
     {
       "src": "./assets/icons/todo-icon-192.png",
-      "type": "image/png"
+      "type": "image/png",
+      "sizes": "192x192"
     },
     {
       "src": "./assets/images/icons/todo-icon-512.png",
-      "type": "image/png"
+      "type": "image/png",
+      "sizes": "512x512"
     }
   ],
   "start_url": ".",

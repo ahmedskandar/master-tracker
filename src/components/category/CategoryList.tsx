@@ -14,7 +14,7 @@ const CategoryList = ({ searchInput }: ListType) => {
         <p className="text-center mt-14 text-white">No category found</p>
       )}
       {Object.keys(filteredCategory).length !== 0 && (
-        <ul className="mt-14 hide-scroll flex flex-col gap-5 max-h-48 overflow-y-scroll border-r pr-2">
+        <ul className="mt-14 hide-scroll flex flex-col gap-5 max-h-60 overflow-y-scroll border-r pr-2">
           {filteredCategory.map((categoryItem, index) => (
             <CategoryItem
               index={index}

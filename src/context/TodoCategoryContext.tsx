@@ -57,7 +57,7 @@ const todoCategoryReducer = (
 };
 
 //Todo context
-const TodoCategoryContext = createContext<
+export const TodoCategoryContext = createContext<
   | {
       state: TodoCategoryStateType;
       dispatch: React.Dispatch<TodoActionType>;
