@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useReducer } from "react";
+import React, { createContext, useContext } from "react";
 import {
   ACTION_TYPE,
   CategoryTodoItemType,
@@ -7,6 +7,7 @@ import {
   TodoCategoryStateType,
 } from "../lib/types";
 import { LOCAL_STORAGE_KEY } from "../data/constants";
+import { useLocalStorageState } from "../hooks/useLocalStorageState";
 
 //Initial State of the todo reducer
 const initialState = {
@@ -70,15 +71,9 @@ export const TodoCategoryContext = createContext<
 
 //Todo provider
 export const TodoProvider = ({ children }: ChildrenProps) => {
-  const storedState = localStorage.getItem(LOCAL_STORAGE_KEY);
-  const initialData = storedState ? JSON.parse(storedState) : initialState;
-  const [state, dispatch] = useReducer(todoCategoryReducer, initialData);
 
-  useEffect(() => {
-    // Store the state in localStorage whenever it changes to persist in browser refresh
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(state));
-  }, [state]);
-
+  const [state, dispatch] = useLocalStorageState(todoCategoryReducer, initialState, LOCAL_STORAGE_KEY)
+ 
   //Returns the todo items' properties
   const getCategoryTodoItems = (id: number) =>
     state.todo.filter((todo: any) => todo.categoryId === id);
