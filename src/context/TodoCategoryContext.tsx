@@ -27,7 +27,7 @@ const todoCategoryReducer = (
       };
     case ACTION_TYPE.DELETE_CATEGORY:
       return {
-        todo: state.todo.filter((todo) => todo.categoryId !== action.payload),
+        todo: state.todo.filter((todo) => todo.categoryId !== action.payload), //Delete all todos within a category
         category: state.category.filter(
           (category) => category.id !== action.payload
         ),
